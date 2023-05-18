@@ -1,0 +1,15 @@
+<form #Form [formGroup]="form">
+  <input type="text" formControlName="name" />
+  <input type="date" formControlName="date" />
+  <select formControlName="documentType">
+    <option *ngFor="let option of options" [ngValue]="option">
+      {{ option.text }}
+    </option>
+  </select>
+  <app-child-form [childForm]="form.controls.childForm"></app-child-form>
+  <app-child-form-two [canUse]="isDateValid" [initialValues]="initialArrayValues" [form]="form.controls.childFormTwo"></app-child-form-two>
+</form>
+
+<button (click)="Form.submit()">Enviar Información</button>
+
+<pre>{{ form.value | json }}</pre>

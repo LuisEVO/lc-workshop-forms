@@ -1,0 +1,10 @@
+<button [disabled]="!canUse" (click)="addArrayGroup()">Agregar Elemento</button>
+<ng-container [formGroup]="form" >
+  <ng-container formArrayName="array" >
+    <ng-container *ngFor="let group of form.controls.array.controls">
+      <div [formGroup]="group">
+        <input type="text" formControlName="text" >
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-container>
